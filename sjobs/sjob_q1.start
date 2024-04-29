@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#################### The following is compulsory ####################
+###Use queue (partition) q1
+#SBATCH -p q1
+### Use 1 nodes and 52 cores
+#SBATCH -N 1 -n 52
+#SBATCH --mail-user=hlinbh@connect.ust.hk
+#SBATCH --mail-type=end
+
+export env_name=base
+export conda_env=${HOME}/anaconda3/envs/${env_name}
+export PATH=${conda_env}/bin:${HOME}/anaconda3/condabin:${PATH}
+export LD_LIBRARY_PATH=${conda_env}/lib:${LD_LIBRARY_PATH}
+
+#####################################################################
+
+cd ${HOME}/Projects/Cyrpto
+python main.py
